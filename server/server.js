@@ -60,7 +60,7 @@ app.delete('/todos/:id',authenticate,(req,res)=>{
     if(!ObjectID.isValid(id)){
         return res.status(404).send();
     }
-    Todo.findByOneAndRemove({
+    Todo.findOneAndRemove({
         _id:id,
         _creator:req.user._id
     }).then((todo)=>{
